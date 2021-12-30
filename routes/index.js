@@ -1,17 +1,5 @@
 import express from 'express';
 
-/* GET home page. */
-// router.get('/', function (req, res, next) {
-//   try {
-//     // const { data } = axios.get('http://localhost:3000/')
-//     console.log(data)
-//     res.render('home', { users: data });
-//   } catch (error) {
-//     res.render('news', { users: null })
-//     console.error('Error', error)
-//   }
-// });
-
 const router = express.Router();
 
 /* GET login page. */
