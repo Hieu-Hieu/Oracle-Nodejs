@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>
-    Apex Admin
+    roles
   </title>
   <link rel="shortcut icon" href="./images/logo-mb.png" type="image/png">
   <!-- GOOGLE FONT -->
@@ -89,39 +89,55 @@
           <!-- ORDERS TABLE -->
           <div class="box">
             <div class="box-header">
-              Recent orders
+              Roles
             </div>
 
-            <div class="box-body overflow-scroll">
+            <div class="box-body overflow-scroll height-300">
               <table>
                 <thead>
                   <tr>
-                    <th>ID</th>
-                    <th>Username</th>
-                    <th>Ngày hết hạn</th>
-                    <th>Trạng thái</th>
+                    <th>ROLE</th>
+                    <th>ROLE ID</th>
+                    <th>PASSWORD REQUIRED</th>
+                    <th>AUTHENTICATION TYPE</th>
+                    <th>COMMON</th>
+                    <th>ORACLE MAINTAINED</th>
+                    <th>INHERITED</th>
+                    <th>IMPLICIT</th>
+                    <th>EXTERNAL_NAME</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <% if(users !=null) { %>
+                  <% if(roles !=null) { %>
                     <tr>
-                      <% users.forEach(function(user, index) { %>
-
+                      <% roles.forEach(function(quota, index) { %>
 
                         <td>
-                          <%- user.id %>
+                          <%- quota.ROLE %>
                         </td>
                         <td>
-                          <%- user.username %>
-
+                          <%- quota.ROLE_ID %>
                         </td>
                         <td>
-                          <%- user.expiryDate %>
+                          <%- quota.PASSWORD_REQUIRED %>
                         </td>
                         <td>
-                          <span class="order-status order-ready">
-                            <%- user.status %>
-                          </span>
+                          <%- quota.AUTHENTICATION_TYPE %>
+                        </td>
+                        <td>
+                          <%- quota.COMMON %>
+                        </td>
+                        <td>
+                          <%- quota.ORACLE_MAINTAINED %>
+                        </td>
+                        <td>
+                          <%- quota.INHERITED %>
+                        </td>
+                        <td>
+                          <%- quota.IMPLICIT %>
+                        </td>
+                        <td>
+                          <%- quota.EXTERNAL_NAME %>
                         </td>
                     </tr>
 
@@ -135,6 +151,7 @@
                 </tbody>
               </table>
             </div>
+
           </div>
         </div>
         <!-- END ORDERS TABLE -->

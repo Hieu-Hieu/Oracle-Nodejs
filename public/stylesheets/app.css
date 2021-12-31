@@ -30,6 +30,13 @@
     box-sizing: border-box;
 }
 
+.height-300 {
+    height: 300px !important;
+}
+.height-500 {
+    height: 500px !important;
+}
+
 body {
     font-family: "Roboto", sans-serif;
     background-color: var(--body-bg);
@@ -441,7 +448,7 @@ table td {
 }
 
 .overflow-scroll {
-    overflow-y: auto;
+    overflow: auto;
 }
 
 .overlay {

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>
-    Apex Admin
+    Quotas
   </title>
   <link rel="shortcut icon" href="./images/logo-mb.png" type="image/png">
   <!-- GOOGLE FONT -->
@@ -89,39 +89,47 @@
           <!-- ORDERS TABLE -->
           <div class="box">
             <div class="box-header">
-              Recent orders
+              Quotas
             </div>
 
-            <div class="box-body overflow-scroll">
+            <div class="box-body overflow-scroll height-300">
               <table>
                 <thead>
                   <tr>
-                    <th>ID</th>
-                    <th>Username</th>
-                    <th>Ngày hết hạn</th>
-                    <th>Trạng thái</th>
+                    <th>TABLESPACE NAME</th>
+                    <th>USERNAME</th>
+                    <th>BYTES</th>
+                    <th>MAX_BYTES</th>
+                    <th>BLOCKS</th>
+                    <th>MAX_BLOCKS</th>
+                    <th>DROPPED</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <% if(users !=null) { %>
+                  <% if(quotas !=null) { %>
                     <tr>
-                      <% users.forEach(function(user, index) { %>
-
+                      <% quotas.forEach(function(quota, index) { %>
 
                         <td>
-                          <%- user.id %>
+                          <%- quota.TABLESPACE_NAME %>
                         </td>
                         <td>
-                          <%- user.username %>
-
+                          <%- quota.USERNAME %>
                         </td>
                         <td>
-                          <%- user.expiryDate %>
+                          <%- quota.BYTES %>
                         </td>
                         <td>
-                          <span class="order-status order-ready">
-                            <%- user.status %>
-                          </span>
+                          <%- quota.MAX_BYTES %>
+                        </td>
+                        <td>
+                          <%- quota.BLOCKS %>
+                        </td>
+                        <td>
+                          <%- quota.MAX_BLOCKS %>
+                        </td>
+                        <td>
+                          <%- quota.DROPPED %>
                         </td>
                     </tr>
 
@@ -135,6 +143,7 @@
                 </tbody>
               </table>
             </div>
+
           </div>
         </div>
         <!-- END ORDERS TABLE -->

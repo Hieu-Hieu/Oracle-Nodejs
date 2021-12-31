@@ -89,17 +89,18 @@
           <!-- ORDERS TABLE -->
           <div class="box">
             <div class="box-header">
-              Recent orders
+              Privileges
             </div>
 
-            <div class="box-body overflow-scroll">
+            <div class="box-body overflow-scroll height-300">
               <table>
                 <thead>
                   <tr>
-                    <th>ID</th>
-                    <th>Username</th>
-                    <th>Ngày hết hạn</th>
-                    <th>Trạng thái</th>
+                    <th>GRANTEE</th>
+                    <th>PRIVILEGE</th>
+                    <th>ADMIN OPTION</th>
+                    <th>COMMON</th>
+                    <th>INHERITED</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -107,21 +108,20 @@
                     <tr>
                       <% users.forEach(function(user, index) { %>
 
-
                         <td>
-                          <%- user.id %>
+                          <%- user.GRANTEE %>
                         </td>
                         <td>
-                          <%- user.username %>
-
+                          <%- user.PRIVILEGE %>
                         </td>
                         <td>
-                          <%- user.expiryDate %>
+                          <%- user.ADMIN_OPTION %>
                         </td>
                         <td>
-                          <span class="order-status order-ready">
-                            <%- user.status %>
-                          </span>
+                          <%- user.COMMON %>
+                        </td>
+                        <td>
+                          <%- user.INHERITED %>
                         </td>
                     </tr>
 
@@ -135,6 +135,7 @@
                 </tbody>
               </table>
             </div>
+
           </div>
         </div>
         <!-- END ORDERS TABLE -->
