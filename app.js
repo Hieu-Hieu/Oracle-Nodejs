@@ -4,7 +4,7 @@ import express from 'express';
 import path, { dirname } from 'path';
 import cookieParser from 'cookie-parser';
 // var logger = require('morgan');
-// import morgan from 'morgan';
+import morgan from 'morgan';
 
 import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
@@ -19,7 +19,7 @@ import { users } from './routes/users.js'
 var app = express();
 
 // setup morgan
-// app.use(morgan("dev"));
+app.use(morgan("tiny"));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
