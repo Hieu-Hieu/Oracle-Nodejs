@@ -1,28 +1,36 @@
-const login = async (req, res) => {
-  const { email, password } = req.body;
+import jwt from "jsonwebtoken";
 
-  const user = await User.findOne({ where: { email } });
+export const isAuthIsAdmin = (req, res, next) => {
+  try {
+    let { token } = req.cookies;
 
-  const userNotPassword = { ...user.dataValues };
-  delete userNotPassword.password;
-  if (user) {
-    //giải mã password nếu đúng trả về true
-    const isAuth = bcryptjs.compareSync(password, user.password); // true
-    if (isAuth) {
-      //tạo token( chuỗi mã hóa, key mã hóa, thời lượng tồn tại của token)
-      const accessToken = jwt.sign(
-        { email: user.email, type: user.type },
-        "hoangquyen8599",
-        { expiresIn: "1h" }
-      );
-      res.status(200).send({
-        message: "Success",
-        data: { ...userNotPassword, accessToken },
-      });
+    if (token !== undefined) {
+      token = token.slice(7, token.length); // Bearer XXXXXX
+
+      const decoded = jwt.verify(token, 'hieu@123')
+
+      if (decoded.username === 'supper') {
+        next()
+      } else {
+        res.redirect('/login')
+      }
+      // next()
+
     } else {
-      res.status(400).send({ message: "Fail" });
+      res.redirect('/login')
     }
-  } else {
-    res.status(404).send({ message: "Not Found Account" });
+  } catch (error) {
+
+    res.redirect('/login')
   }
+
 };
+
+
+const login = async (req, res) => {
+  const { username, password } = req.body;
+  if (username && password) {
+    global.USERNAME = username;
+    global.PASSWORD = password;
+  }
+}

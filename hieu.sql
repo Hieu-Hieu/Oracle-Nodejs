@@ -38,7 +38,9 @@ SELECT * FROM user_tab_privs_recd;
 
 
 
-
+--lấy tất cả profiles và user có profile đó
+SELECT DBA_PROFILES.profile, resource_name, limit, USERNAME,created
+FROM DBA_PROFILES  inner join DBA_USERS  on DBA_PROFILES.profile = DBA_USERS.profile ORDER BY created DESC;
 
 
 

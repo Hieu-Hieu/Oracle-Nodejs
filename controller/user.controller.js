@@ -1,4 +1,6 @@
+import oracledb from 'oracledb';
 import { userModel } from '../models/user.model.js'
+import jwt from 'jsonwebtoken';
 
 const getAllUsers = async (req, res) => {
   try {
@@ -115,10 +117,94 @@ const getAllRoles = async (req, res) => {
   }
 }
 
+const getAllProfiles = async (req, res) => {
+  try {
+    const result = await userModel.listProfiles();
+    if (result) {
+      let profiles = [];
+
+      result.rows.map(p => {
+        let profileSchema = {
+          "PRFILE": p[0],
+          "RESOURCE_NAME": p[1],
+          "LIMIT": p[2],
+          "USERNAME": p[3],
+        }
+
+        profiles.push(profileSchema);
+      });
+
+      res.render('profiles', { profiles });
+
+    }
+
+  } catch (error) {
+    console.log(error)
+    res.render('roles', { roles: null, error: error })
+  }
+}
+
+const checkLogin = async (username, password) => {
+  console.log(password)
+  const cns = {
+    user: username,
+    password: password,
+    connectString: "localhost:1521/ORCLPDB"
+  }
+  try {
+    let cnn = await oracledb.getConnection(cns);
+
+    if (cnn._events) {
+      return true;
+    }
+
+  } catch (error) {
+    return false;
+  }
+
+  return false;
+}
+
+const login = async (req, res) => {
+  try {
+    const { username, password } = req.body;
+    const a = await checkLogin(username, password)
+
+    if (a) {
+      global.PASSWORD = password;
+      global.USERNAME = username;
+
+      const token = jwt.sign(
+        { username, password },
+        "hieu@123",
+        { expiresIn: "2h" }
+      );
+
+      res
+        .status(201)
+        .cookie('token', 'Bearer ' + token, {
+          expires: new Date(Date.now() + 8 * 3600000) // cookie will be removed after 8 hours
+        })
+        .cookie('isAdmin', true)
+        .redirect('/users')
+
+    } else {
+      console.log('not login')
+      res.render('login', { message: 'Sai tài khoản hoặc mật khẩu' })
+    }
+  } catch (err) {
+    console.log('catch login')
+    res.render('login', { message: 'Sai tài khoản hoặc mật khẩu' })
+  }
+
+}
+
 export const userController =
 {
   getAllUsers,
   getAllPrivileges,
   getAllQuotas,
   getAllRoles,
+  login,
+  getAllProfiles,
 };

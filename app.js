@@ -10,7 +10,6 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-
 // var indexRouter = require('./routes/index');
 import { api } from './routes/index.js';
 // var usersRouter = require('./routes/users');

@@ -35,7 +35,16 @@ const listRoles = () => {
 }
 
 const listProfiles = () => {
-  let sql = `SELECT * FROM DBA_USERS ORDER BY created DESC`;
+  let sql = `SELECT DBA_PROFILES.profile, resource_name, limit, USERNAME,created
+  FROM DBA_PROFILES  inner join DBA_USERS  on DBA_PROFILES.profile = DBA_USERS.profile ORDER BY created DESC`;
+  const result = Open(sql, [], false);
+  data = result;
+
+  return data;
+}
+
+const isValidUsernamePassword = (username, password) => {
+  let sql = `select validateUser(${username}, ${password}) from dual`;
   const result = Open(sql, [], false);
   data = result;
 
