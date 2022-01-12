@@ -1,0 +1,35 @@
+<div class="form-style-2" id="form-modal">
+  <span class="close">&times;</span>
+  <div class="form-style-2-heading">Add New Profile</div>
+  <form action="/addProfile" method="post">
+    <label for="field1"><span>Profile name <span class="required">*</span></span>
+      <input type="text" class="input-field" name="NAME" value="" />
+    </label>
+    <label for="field2"><span>SESSIONS_PER_USER <span class="required">*</span></span>
+      <!-- <input type="text" class="input-field" name="field2" value="" /> -->
+      <input list="SESSIONS_PER_USER" name="SESSIONS_PER_USER" class="input-field">
+      <datalist name="field2" id="SESSIONS_PER_USER" class="select-field">
+        <option value="Default">
+        <option value="Unlimited">
+      </datalist>
+    </label>
+    <label for="field3">
+      <span>IDLE_TIME</span>
+      <!-- <input type="text" class="tel-number-field" name="tel_no_1" value="" maxlength="4" /> -->
+      <input list="IDLE_TIME" name="IDLE_TIME" class="input-field">
+      <datalist name="field3" id="IDLE_TIME" class="select-field">
+        <option value="Default">
+        <option value="Unlimited">
+      </datalist>
+    </label>
+    <label for="field4"><span>CONNECT_TIME</span>
+      <input list="CONNECT_TIME" name="CONNECT_TIME" class="input-field">
+      <datalist name="field4" id="CONNECT_TIME" class="select-field">
+        <option value="Default">
+        <option value="Unlimited">
+      </datalist>
+    </label>
+
+    <label><span> </span><input type="submit" value="Submit" /></label>
+  </form>
+</div>

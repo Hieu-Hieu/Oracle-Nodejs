@@ -9,10 +9,10 @@
     <div class="sidebar-user-info">
       <img src="/images/user-image-2.png" alt="User picture" class="profile-image">
       <div class="sidebar-user-name">
-        anh tuat
+        Admin
       </div>
     </div>
-    <button class="btn btn-outline">
+    <button class="btn btn-outline" onclick="logout()">
       <i class='bx bx-log-out bx-flip-horizontal'></i>
     </button>
   </div>
@@ -21,34 +21,42 @@
     <li>
       <a href="/users" class="active">
         <i class='bx bx-home'></i>
-        <span>dashboard</span>
+        <span>user management</span>
       </a>
     </li>
     <li>
       <a href="/users/roles">
         <i class='bx bx-user-circle'></i>
-        <span>Quản lí role</span>
+        <span>role management</span>
       </a>
     </li>
     <li>
       <a href="/users/profiles">
         <i class='bx bx-user-circle'></i>
-        <span>Quản lí profile</span>
+        <span>profile management</span>
       </a>
     </li>
     <li>
       <a href="/users/privileges">
         <i class='bx bx-user-circle'></i>
-        <span>Quản lí privileges</span>
+        <span>privilege management</span>
       </a>
     </li>
     <li>
       <a href="/users/quotas">
         <i class='bx bx-user-circle'></i>
-        <span>Quản lí quotas</span>
+        <span>quotas management</span>
       </a>
     </li>
   </ul>
   <!-- END SIDEBAR MENU -->
 </div>
 <!-- END SIDEBAR -->
+<script>
+  var logout = () => {
+    // alert('kkkk')
+    // browser.cookies.remove({ token });
+    document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    location.href = '/login'
+  }
+</script>

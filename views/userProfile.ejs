@@ -20,7 +20,8 @@
     <link rel='stylesheet' href='/stylesheets/grid.css'>
     <link rel="stylesheet" href="/stylesheets/app.css">
     <link rel="stylesheet" href="/stylesheets/user.css">
-    <link rel="stylesheet" href="/stylesheets/newuser.css">
+    <link rel="stylesheet" href="/stylesheets/userProfile.css">
+
 </head>
 
 <body>
@@ -45,10 +46,31 @@
                         <!-- ORDERS TABLE -->
                         <div class="box">
                             <div class="box-header">
-                                Recent orders
+                                User Profile
                             </div>
                             <div class="box-body overflow-scroll">
                                 <div class="row">
+                                    <div class="form-style-2" id="form-modal">
+
+                                        <form action="/addProfile" method="post">
+                                            <label for="field1"><span>Profile name <span
+                                                        class="required">*</span></span>
+                                                <input type="text" class="input-field" name="NAME" value="" disabled />
+                                            </label>
+                                            <label for="field1"><span>Profile name <span
+                                                        class="required">*</span></span>
+                                                <input type="text" class="input-field" name="NAME" value="" />
+                                            </label>
+                                            <label for="field1"><span>Profile name <span
+                                                        class="required">*</span></span>
+                                                <input type="text" class="input-field" name="NAME" value="" />
+                                            </label>
+                                            <label for="field1"><span>Profile name <span
+                                                        class="required">*</span></span>
+                                                <input type="text" class="input-field" name="NAME" value="" />
+                                            </label>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>

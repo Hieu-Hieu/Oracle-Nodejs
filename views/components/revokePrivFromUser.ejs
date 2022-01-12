@@ -1,0 +1,33 @@
+<div class="form-style-2" id="form-modal">
+  <span class="close" id="del-close">&times;</span>
+  <div class="form-style-2-heading">Grant Privilege To User</div>
+  <form action="/" method="post">
+    <label for="NAME">
+      <span>Username</span>
+      <select name="NAME" class="select-field" onchange="getPrivs(this)">
+        <% listUserName.map(x=> {%>
+          <option value="<%- x%>">
+            <%- x %>
+          </option>
+          <%})%>
+      </select>
+    </label>
+    <% var listPrivByUser=[]; %>
+      <% var getPrivs=(a)=> {
+        var x = (a.value || a.options[a.selectedIndex].value);
+        let c = users.filter(x => x.GRANTEE === a)
+        c.map(x => listPrivByUser.push(x.PRIVILEGE))
+        }
+        %>
+        <label for="PRIVILEGE"><span>Privilege</span>
+          <select name="PRIVILEGE" class="select-field">
+            <% listPrivByUser.map(x=> {%>
+              <option value="<%- x%>">
+                <%- x %>
+              </option>
+              <%})%>
+          </select>
+        </label>
+        <label><span> </span><input type="submit" value="Submit" /></label>
+  </form>
+</div>

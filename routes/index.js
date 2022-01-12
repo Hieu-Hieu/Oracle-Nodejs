@@ -29,5 +29,16 @@ router.get('/user', function (req, res, next) {
 });
 
 router.post('/login', userController.login);
+router.post('/addProfile', userController.addProfile);
+router.post('/deleteProfile', userController.removeProfile);
+
+router.post('/addrole', userController.addRole);
+router.post('/dropRole', userController.dropRole);
+router.post('/alterRole', userController.alterRole);
+
+router.post('/addPrivToUser', userController.grantPrivilegeToUser);
+router.get('/priv/:username', userController.getPrv);
+router.post('/addUser', userController.createUser);
+router.post('/dropUser', userController.dropUser);
 
 export const api = router;

@@ -30,8 +30,17 @@
     box-sizing: border-box;
 }
 
+.btnx {
+    padding: 4px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.3);
+    margin-right: 2px;
+    border-radius: 2px;
+}
+
 .height-300 {
-    height: 300px !important;
+    height: 350px !important;
 }
 .height-500 {
     height: 500px !important;
@@ -407,7 +416,7 @@ table thead tr {
 
 table th,
 table td {
-    padding: 20px 0;
+    padding: 20px 6px;
     border-bottom: 1px solid var(--border-color);
 }
 

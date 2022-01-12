@@ -1,0 +1,19 @@
+<div class="form-style-2" id="form-modal">
+  <span class="close" id="del-close">&times;</span>
+  <div class="form-style-2-heading">Drop Profile</div>
+  <form action="/deleteProfile" method="post">
+    <label for="NAME"><span>Select Profile <span class="required">*</span></span>
+      <select name="NAME" class="select-field">
+        <% if(lisProfileNames) { %>
+          <% lisProfileNames.map(p=>{%>
+            <option value="<%- p%>">
+              <%- p%>
+            </option>
+            <% }) %>
+
+              <% } %>
+      </select>
+    </label>
+    <label><span> </span><input type="submit" value="Submit" /></label>
+  </form>
+</div>

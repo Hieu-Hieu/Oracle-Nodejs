@@ -1,0 +1,17 @@
+<div class="form-style-2" id="form-modal">
+  <span class="close" id="del-close">&times;</span>
+  <div class="form-style-2-heading">Drop User</div>
+  <form action="/dropUser" method="post">
+    <label for="NAME">
+      <span>Username</span>
+      <select name="NAME" class="select-field" onchange="getPrivs(this)">
+        <% listUName.map(x=> {%>
+          <option value="<%- x%>">
+            <%- x %>
+          </option>
+          <%})%>
+      </select>
+
+      <label><span> </span><input type="submit" value="Submit" /></label>
+  </form>
+</div>

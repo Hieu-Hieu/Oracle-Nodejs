@@ -1,0 +1,27 @@
+<div class="form-style-2" id="form-modal">
+  <span class="close">&times;</span>
+  <div class="form-style-2-heading">Grant Privilege To User</div>
+  <form action="/addPrivToUser" method="post">
+    <label for="NAME">
+      <span>Username</span>
+      <select name="NAME" class="select-field">
+        <% listUserName.map(x=> {%>
+          <option value="<%- x%>">
+            <%- x %>
+          </option>
+          <%})%>
+      </select>
+    </label>
+    <label for="PRIVILEGE"><span>Privilege</span>
+      <select name="PRIVILEGE" class="select-field">
+        <% listPrivName.map(x=> {%>
+          <option value="<%- x%>">
+            <%- x %>
+          </option>
+          <%})%>
+      </select>
+    </label>
+
+    <label><span> </span><input type="submit" value="Submit" /></label>
+  </form>
+</div>

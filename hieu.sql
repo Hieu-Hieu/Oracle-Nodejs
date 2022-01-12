@@ -90,3 +90,32 @@ BEGIN
 END;
 
 select validateUser('SUPPER', 'supper') from dual;
+
+--tạo user------
+CREATE USER sidney 
+    IDENTIFIED BY out_standing1 
+    DEFAULT TABLESPACE example 
+    TEMPORARY TABLESPACE temp
+    QUOTA 10M ON example 
+    QUOTA 5M ON system 
+    PROFILE app_user;
+  
+--select table space name
+ SELECT TABLESPACE_NAME FROM USER_TABLESPACES where status='ONLINE';
+
+------------Profiles----------------
+CREATE PROFILE developer_hieu LIMIT
+  SESSIONS_PER_USER 2
+  IDLE_TIME 60
+  CONNECT_TIME 480;
+
+ALTER PROFILE developer_hieu LIMIT
+  SESSIONS_PER_USER 5
+  CONNECT_TIME 600
+  IDLE_TIME 30;
+
+  --xóa
+DROP PROFILE test CASCADE;
+
+--lấy list tên profile
+select distinct PROFILE from DBA_PROFILES;
